@@ -22,13 +22,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Round 1 Results<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="menu-item dropdown dropdown-submenu">
+                                @Html.ActionLink("2010 FIFA World Cup South Africa", "Round1Results", "Home", new { tournament = "2010 FIFA World Cup South Africa" }, null)
+                            </li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("Scheduled Matches", "AllMatches", "Home")</li>
-                    <li>@Html.ActionLink("Round 1 Results", "Round1Results", "Home")</li>
                 </ul>
+
+
+
+
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <br /><br />
         @RenderBody()
         <hr />
         <footer>
@@ -42,5 +54,10 @@
 
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     @RenderSection("scripts", required: false)
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

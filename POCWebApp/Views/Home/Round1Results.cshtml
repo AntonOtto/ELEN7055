@@ -1,10 +1,10 @@
 ﻿@model List<POCWebApp.Models.Round1Results>
 @{
-    ViewBag.Title = "Round1Results";
+    ViewBag.Title = "Round 1 Results - " + ViewBag.Tournament;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Round1Results</h2>
+<h2>@ViewBag.Tournament: Round 1 Results</h2>
 
 @if (Model != null)
 {
@@ -15,7 +15,7 @@
         {
             if (previousGroup != item.Group)
             {
-                <a href="home/details">
+                <a href="Round1Details?Tournament=@item.Tournament&GroupName=@item.Group">
                     <div style="border: 1px solid black;" class="col-md-2 col-md-offset-1">
                         <h3>@Html.Raw(item.Group)</h3>
                         <table class="table table - striped table - bordered table - condensed tablesorter">

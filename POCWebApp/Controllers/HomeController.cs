@@ -54,10 +54,18 @@ namespace POCWebApp.Controllers
             return View(matches);
         }
 
-        public ActionResult Round1Results()
+        public ActionResult Round1Results(string tournament)
         {
-            var round1Results = _models.GetRound1Results();
+            var round1Results = _models.GetRound1Results(tournament);
+            ViewBag.Tournament = tournament;
+            return View(round1Results);
+        }
 
+        public ActionResult Round1Details(string Tournament, string GroupName)
+        {
+            var round1Results = _models.GetRound1Results(Tournament,GroupName);
+            ViewBag.Tournament = Tournament;
+            ViewBag.GroupName = GroupName;
             return View(round1Results);
         }
     }

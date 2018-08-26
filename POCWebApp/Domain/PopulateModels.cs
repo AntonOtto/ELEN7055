@@ -36,11 +36,22 @@ namespace POCWebApp.Domain
             return matchesAndDates;
         }
 
-        public List<Round1Results> GetRound1Results()
+        public List<Round1Results> GetRound1Results(string Tournament)
+        {
+            return GetRound1Results(Tournament,string.Empty);
+        }
+
+        public List<Round1Results> GetRound1Results(string Tournament, string GroupName)
         {
             var round1Results = new List<Round1Results>();
+            var sql = "select * from Round1Results where Tournament='"+ Tournament +"' order by GroupName, Points desc";
 
-            var allResults = _db.ExecuteSQL("select * from Round1Results order by GroupName, Points desc");
+            if (GroupName != string.Empty)
+            {
+                sql = "select * from Round1Results where Tournament='" + Tournament + "' and GroupName = '" + GroupName + "' order by Points desc";
+            }
+
+            var allResults = _db.ExecuteSQL(sql);
 
             for (var i = 0; i <= allResults.Tables[0].Rows.Count - 1; i++)
             {
