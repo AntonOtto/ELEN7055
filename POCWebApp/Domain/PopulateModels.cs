@@ -44,11 +44,11 @@ namespace POCWebApp.Domain
         public List<Round1Results> GetRound1Results(string Tournament, string GroupName)
         {
             var round1Results = new List<Round1Results>();
-            var sql = "select * from Round1Results where Tournament='"+ Tournament +"' order by GroupName, Points desc";
+            var sql = "select * from TournamentRound1Results where Tournament='"+ Tournament +"' order by GroupName, Points desc";
 
             if (GroupName != string.Empty)
             {
-                sql = "select * from Round1Results where Tournament='" + Tournament + "' and GroupName = '" + GroupName + "' order by Points desc";
+                sql = "select * from TournamentRound1Results where Tournament='" + Tournament + "' and GroupName = '" + GroupName + "' order by Points desc";
             }
 
             var allResults = _db.ExecuteSQL(sql);
@@ -72,6 +72,32 @@ namespace POCWebApp.Domain
             }
 
             return round1Results;
+        }
+
+
+        public List<TournamentMatchSchedule> GetTournamentMatchSchedule(string Tournament)
+        {
+            var results = new List<TournamentMatchSchedule>();
+            var sql = "select * from TournamentMatchSchedule where Tournament='" + Tournament + "' order by DateTime desc";
+
+            var allResults = _db.ExecuteSQL(sql);
+
+            for (var i = 0; i <= allResults.Tables[0].Rows.Count - 1; i++)
+            {
+                var result = new TournamentMatchSchedule
+                { 
+                    Tournament = allResults.Tables[0].Rows[i][0].ToString(),
+                    GroupName = allResults.Tables[0].Rows[i][1].ToString(),
+                    VenueName = allResults.Tables[0].Rows[i][2].ToString(),
+                    City = allResults.Tables[0].Rows[i][3].ToString(),
+                    MatchDateTime = Convert.ToDateTime(allResults.Tables[0].Rows[i][4].ToString()),
+                    Team1 = allResults.Tables[0].Rows[i][5].ToString(),
+                    Team2 = allResults.Tables[0].Rows[i][6].ToString()
+                };
+                results.Add(result);
+            }
+
+            return results;
         }
     }
 }

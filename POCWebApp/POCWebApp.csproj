@@ -156,6 +156,7 @@
     <Compile Include="Models\AllMatchesAndDates.cs" />
     <Compile Include="Models\PlayersPerTeam.cs" />
     <Compile Include="Models\Round1Results.cs" />
+    <Compile Include="Models\TournamentMatchSchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     <Content Include="Views\Home\AllMatches.cshtml" />
     <Content Include="Views\Home\Round1Results.cshtml" />
     <Content Include="Views\Home\Round1Details.cshtml" />
+    <Content Include="Views\Home\TournamentMatchSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

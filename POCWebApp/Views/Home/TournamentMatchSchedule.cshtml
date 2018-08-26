@@ -1,0 +1,49 @@
+﻿@model List<POCWebApp.Models.TournamentMatchSchedule>
+@{
+    ViewBag.Title = "Tournament Match Schedule - " + ViewBag.Tournament;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Tournament: Tournament Match Schedule</h2>
+
+<div id="dvData">
+    <table class="table table-striped table-bordered table-condensed tablesorter" id="AllMatchesTable">
+        <thead>
+            <tr class="tenant-table-header" style="color:white; background-color:#a6ce38; padding:2px;">
+                <th>Group</th>
+                <th>Venue</th>
+                <th>City</th>
+                <th>Match Date And Time</th>
+                <th>Team1</th>
+                <th>Team2</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+            <tr>
+                <td>@Html.Raw(item.GroupName)</td>
+                <td>@Html.Raw(item.VenueName)</td>
+                <td>@Html.Raw(item.City)</td>
+                <td>@Html.Raw(item.MatchDateTime)</td>
+                <td>@Html.Raw(item.Team1)</td>
+                <td>@Html.Raw(item.Team2)</td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $('#AllMatchesTable').DataTable({
+            "order": [[3, "asc"]],
+            "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "All"]]
+        });
+    });
+    </script>
+}

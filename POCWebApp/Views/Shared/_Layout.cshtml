@@ -30,7 +30,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Scheduled Matches", "AllMatches", "Home")</li>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Match Schedule<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="menu-item dropdown dropdown-submenu">
+                                @Html.ActionLink("2010 FIFA World Cup South Africa", "TournamentMatchSchedule", "Home", new { tournament = "2010 FIFA World Cup South Africa" }, null)
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
 
 
