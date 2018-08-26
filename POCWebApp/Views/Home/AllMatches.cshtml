@@ -1,0 +1,45 @@
+﻿@model List<POCWebApp.Models.AllMatchesAndDates>
+@{
+    ViewBag.Title = "AllMatches";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllMatches</h2>
+
+<div id="dvData">
+    <table class="table table-striped table-bordered table-condensed tablesorter" id="AllMatchesTable">
+        <thead>
+            <tr class="tenant-table-header" style="color:white; background-color:#a6ce38; padding:2px;">
+                <th>Team Name</th>
+                <th>Stadium</th>
+                <th>City</th>
+                <th>Date And Time</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.Raw(item.TeamName)</td>
+                        <td>@Html.Raw(item.Stadium)</td>
+                        <td>@Html.Raw(item.City)</td>
+                        <td>@Html.Raw(item.MatchDateTime)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts {
+<script>
+    $(document).ready(function () {
+        $('#AllMatchesTable').DataTable({
+            "order": [[3, "asc"]],
+            "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "All"]]
+        });
+    });
+</script>
+}
