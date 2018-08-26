@@ -23,6 +23,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Match Schedule<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="menu-item dropdown dropdown-submenu">
+                                @Html.ActionLink("2010 FIFA World Cup South Africa", "TournamentMatchSchedule", "Home", new { tournament = "2010 FIFA World Cup South Africa" }, null)
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Round 1 Results<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="menu-item dropdown dropdown-submenu">
@@ -31,13 +39,14 @@
                         </ul>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Match Schedule<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Goals Per Player<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="menu-item dropdown dropdown-submenu">
-                                @Html.ActionLink("2010 FIFA World Cup South Africa", "TournamentMatchSchedule", "Home", new { tournament = "2010 FIFA World Cup South Africa" }, null)
+                                @Html.ActionLink("2010 FIFA World Cup South Africa", "TournamentGoalsPerPlayer", "Home", new { tournament = "2010 FIFA World Cup South Africa" }, null)
                             </li>
                         </ul>
                     </li>
+
                 </ul>
 
 

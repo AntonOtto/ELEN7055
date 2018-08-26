@@ -54,6 +54,13 @@ namespace POCWebApp.Controllers
             return View(matches);
         }
 
+        public ActionResult TournamentGoalsPerPlayer(string tournament)
+        {
+            var matches = _models.GetTournamentGoalsPerPlayer(tournament);
+            ViewBag.Tournament = tournament;
+            return View(matches);
+        }
+
         public ActionResult TournamentMatchSchedule(string tournament)
         {
             var matches = _models.GetTournamentMatchSchedule(tournament);

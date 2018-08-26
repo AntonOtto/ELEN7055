@@ -1,0 +1,45 @@
+﻿@model List<POCWebApp.Models.TournamentGoalsPerPlayer>
+@{
+    ViewBag.Title = "Tournament Goals PerPlayer - " + ViewBag.Tournament;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Tournament: Tournament Goals Per Player</h2>
+
+<div id="dvData">
+    <table class="table table-striped table-bordered table-condensed tablesorter" id="AllPlayersTable">
+        <thead>
+            <tr class="tenant-table-header" style="color:white; background-color:#a6ce38; padding:2px;">
+                <th>Player Name</th>
+                <th>Player Lastname</th>
+                <th>Country</th>
+                <th>Number of Goals</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.Raw(item.PlayerName)</td>
+                        <td>@Html.Raw(item.PlayerLastName)</td>
+                        <td>@Html.Raw(item.CountryName)</td>
+                        <td>@Html.Raw(item.NumberOfGoals)</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#AllPlayersTable').DataTable({
+                "order": [[3, "desc"]],
+                "lengthMenu": [[20, 40, 60, -1], [20, 40, 60, "All"]]
+            });
+        });
+    </script>
+}

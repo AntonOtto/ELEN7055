@@ -99,5 +99,29 @@ namespace POCWebApp.Domain
 
             return results;
         }
+
+
+        public List<TournamentGoalsPerPlayer> GetTournamentGoalsPerPlayer(string Tournament)
+        {
+            var results = new List<TournamentGoalsPerPlayer>();
+            var sql = "select * from TournamentGoalsPerPlayer where Tournament='" + Tournament + "' order by [Number of Goals] desc";
+
+            var allResults = _db.ExecuteSQL(sql);
+
+            for (var i = 0; i <= allResults.Tables[0].Rows.Count - 1; i++)
+            {
+                var result = new TournamentGoalsPerPlayer
+                {
+                    Tournament = allResults.Tables[0].Rows[i][0].ToString(),
+                    PlayerName = allResults.Tables[0].Rows[i][1].ToString(),
+                    PlayerLastName = allResults.Tables[0].Rows[i][2].ToString(),
+                    CountryName = allResults.Tables[0].Rows[i][3].ToString(),
+                    NumberOfGoals = Convert.ToInt32(allResults.Tables[0].Rows[i][4].ToString())
+                };
+                results.Add(result);
+            }
+
+            return results;
+        }
     }
 }
